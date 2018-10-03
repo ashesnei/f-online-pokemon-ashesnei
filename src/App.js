@@ -1,25 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const apiPoke = "http://pokeapi.salestock.net/api/v2/pokemon/?limit=25"
+
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      pokemonList: []
+    }
+    this.fetching();
+  }
+
+  fetching(){
+    fetch(apiPoke)
+    .then(response => response.json())
+    .then(data => {
+      let results = data.results
+      this.setState({ pokemonList: results})
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <header>
+          <h1 className="appName">Tu Pokedex</h1>
         </header>
+        <input type="text"/>
+        <ul className="pokeList">
+          {this.state.pokemonList.map(item => {
+            return (
+              <li className="itemPokemon" key={item.index}>
+                <div>
+                  <h2>{item.name}</h2>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+
       </div>
     );
   }
