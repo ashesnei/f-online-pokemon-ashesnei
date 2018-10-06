@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 // import Pokemon from "./components/Pokemon";
 
-const apiPoke = "http://pokeapi.salestock.net/api/v2/pokemon/?limit=25";
+const apiPoke = 'https://pokeapi.co/api/v2/pokemon/';
+const countPokemons = 5;
 
 class App extends Component {
   constructor(props){
@@ -11,26 +12,36 @@ class App extends Component {
       pokemonList: [],
       pokemon: null
     }
-    this.fetching();
   }
-
+  componentDidMount() {
+    this.fetching()
+  }
+  
   fetching(){
-    let pokeList = [];
     fetch(apiPoke)
     .then(response => response.json())
 
     .then(data => {
       let list = data.results;
-       for(let i=0; i< list.length; i++) {
-          fetch(list[i].url)
-          .then (response=> response.json())
-          .then (data => {
-            console.log(data)
-             pokeList.push(data)
-              })
-       }
-    this.setState({ pokemonList: pokeList})
-  })}
+      this.saveList(list);
+    })
+  }
+
+  saveList(pokemons){
+    let pokeList = [];
+    
+    for(let i=0; i<countPokemons; i++){
+      fetch(pokemons[i].url)
+      .then (response => {
+        return response.json();
+      })
+      .then (data => {
+        pokeList.push(data);
+      })
+    }
+    this.setState({pokemonList: pokeList})
+  }
+      
 
   render() {
     return (
@@ -38,19 +49,30 @@ class App extends Component {
         <header>
           <h1 className="appName">Tu Pokedex</h1>
         </header>
+        <main>
         <input type="text"/>
         <ul className="pokeList">
-          {/* {this.state.pokemonList.map(item => {
-            return (
-              <li className="itemPokemon" key={item.index}>
-              <div>
-                  <h2>Pokemon</h2>
-              </div>
-          </li>
-            )
-          })} */}
-        </ul>
+          {
+            this.state.pokemonList.map(pokemon => {
+              return (
+                <li className="card">
+                  <div className="cardContainer">
+                    <div className="cardContailer__ImageContainer">
+                      <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
+                      <span className="pokemonOrder">{pokemon.order}/{countPokemons}</span>
+                    </div>
+                    <div className="cardContailer__dataContainer">
+                      <div className="cardContailer__dataContainer--type">
 
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )
+            })
+          }
+        </ul>
+        </main>
       </div>
     );
   }
