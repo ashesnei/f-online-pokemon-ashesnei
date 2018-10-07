@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Pokedex from './components/Pokedex';
+import Pokemons from './components/Pokemons';
+// import Pokedex from './components/Pokedex';
 
 const apiPoke = 'https://pokeapi.co/api/v2/pokemon/';
 const countPokemons = 5;
@@ -45,7 +46,20 @@ class App extends Component {
         </header>
         <main>
           <input type="text" />
-          <Pokedex pokemonList={this.state.pokemonList}/>
+          <Pokemons pokemonList={this.state.pokemonList}/>
+          {/* <ul>
+            <li>
+              {
+               this.state.pokemonList.length < 1 ?
+               <h1>No data</h1>
+               :
+               this.state.pokemonList.map( pokemon => {
+                 return <h2>{pokemon.name}</h2>
+               })
+                }
+            </li>
+          </ul> */}
+          <p>Prueba</p>
         </main>
       </div>
     );
