@@ -7,10 +7,10 @@ class Pokedex extends React.Component {
         {
           <ul className="pokeList">
             {
-              this.props.pokemonList.length < 1 ?
-                <h1>No data</h1>
-                :
-                this.props.pokemonList.map(pokemon => {
+                this.props.pokemonList.filter(item => {
+                  return item.name.toLowerCase().includes(this.props.filter.toLowerCase()); 
+                    })
+                  .map(pokemon => {
                   return (
                     <li>
                       <div className="pokemonCard">

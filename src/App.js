@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Pokemons from './components/Pokemons';
+import Filter from './components/Filter';
 
 const apiPoke = 'https://pokeapi.co/api/v2/pokemon/';
 const countPokemons = 5;
@@ -12,6 +13,7 @@ class App extends Component {
       pokemonList: [],
       pokemonSearch: ""
     }
+    this.filterFunction = this.filterFunction.bind(this);
   }
 
   componentDidMount(){
@@ -36,6 +38,10 @@ class App extends Component {
       })
   }
 
+  filterFunction(e) {
+    const value = e.currentTarget.value;
+    this.setState({pokemonSearch: value })
+  }
 
   render() {
     return (
@@ -44,8 +50,8 @@ class App extends Component {
           <h1 className="appName">Tu Pokedex</h1>
         </header>
         <main>
-          <input type="text" />
-          <Pokemons pokemonList={this.state.pokemonList}/>
+          <Filter filterFunction={this.filterFunction}/>
+          <Pokemons pokemonList={this.state.pokemonList} filter={this.state.pokemonSearch}/>
         </main>
       </div>
     );

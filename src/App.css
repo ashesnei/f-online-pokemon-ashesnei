@@ -12,7 +12,9 @@
 
 .pokeList {
   list-style: none;
+  width: 100vw;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   text-align: initial;
 }
