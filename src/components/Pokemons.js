@@ -7,7 +7,8 @@ class Pokedex extends React.Component {
         {
           <ul className="pokeList">
             {
-                this.props.pokemonList.filter(item => {
+                this.props.pokemonList.sort((a, b) => a.id - b.id)
+                .filter(item => {
                   return item.name.toLowerCase().includes(this.props.filter.toLowerCase()); 
                     })
                   .map(pokemon => {

@@ -4,19 +4,23 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  background-color: #FFE62C;
+  justify-content: center;
   padding: 0;
   margin: 0;
-  height: 100vh;
+  background-color: #FFE62C;
+  min-height: 100vh;
 }
 
 .pokeList {
   list-style: none;
-  width: 100vw;
+  width: 90%;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   text-align: initial;
+  padding: 0;
+  margin: auto;
+  margin-top: 20px;
 }
 
 .pokemonCard {
@@ -49,7 +53,7 @@
 
 .pokemonCard__graphic--container-order {
   background-color: #c9c9c9;
-  width: 60px;
+  width: 75px;
   height: 22px;
   position: relative;
   top: 35px;
