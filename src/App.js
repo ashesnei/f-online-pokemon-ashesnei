@@ -46,9 +46,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1 className="appName">Tu Pokedex</h1>
-        </header>
         <main>
           <Filter filterFunction={this.filterFunction} filter={this.state.pokemonSearch}/>
           <Pokemons pokemonList={this.state.pokemonList} filter={this.state.pokemonSearch}/>

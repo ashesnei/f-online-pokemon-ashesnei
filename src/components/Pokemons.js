@@ -14,7 +14,6 @@ class Pokedex extends React.Component {
                   .map(pokemon => {
                   return (
                     <PokeCard pokemon={pokemon} pokemonList={this.props.pokemonList}/>
-                    
                   )
                 })
             }
