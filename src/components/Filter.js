@@ -3,7 +3,14 @@ import React from 'react';
 class Filter extends React.Component {
 render(){
 return (
-    <input type="text" onChange={this.props.filterFunction}/>
+    <React.Fragment>
+    {
+        this.props.filter==="" ?
+        <input className="input"  type="text" onChange={this.props.filterFunction} value="Filtra pokemons por nombre..."/>    
+        :
+        <input className="input"  type="text" onChange={this.props.filterFunction} value={this.props.filter}/>
+    }
+    </React.Fragment>
  );
  }
 }

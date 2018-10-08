@@ -4,7 +4,7 @@ import Pokemons from './components/Pokemons';
 import Filter from './components/Filter';
 
 const apiPoke = 'https://pokeapi.co/api/v2/pokemon/';
-const countPokemons = 25;
+const countPokemons = 50;
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class App extends Component {
           <h1 className="appName">Tu Pokedex</h1>
         </header>
         <main>
-          <Filter filterFunction={this.filterFunction}/>
+          <Filter filterFunction={this.filterFunction} filter={this.state.pokemonSearch}/>
           <Pokemons pokemonList={this.state.pokemonList} filter={this.state.pokemonSearch}/>
         </main>
       </div>
