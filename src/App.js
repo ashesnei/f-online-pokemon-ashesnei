@@ -4,7 +4,7 @@ import Pokemons from './components/Pokemons';
 import Filter from './components/Filter';
 
 const apiPoke = 'https://pokeapi.co/api/v2/pokemon/';
-const countPokemons = 25;
+const countPokemons = 50;
 
 class App extends Component {
   constructor(props) {
